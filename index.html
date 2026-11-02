@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0d11">
-  <meta name="description" content="GGTR Audio creates practical, free audio tools for guitarists and music creators. Discover GGTR Tone Match.">
-  <title>GGTR Audio — Independent Audio Tools</title>
+  <meta name="description" content="GGTR Audio — Tools for Guitarists & Music Producers. Your Sound. Your Tools.">
+  <title>GGTR Audio — Your Sound. Your Tools.</title>
   <style>
     :root{
       color-scheme:dark;--bg:#0b0d11;--surface:#11151c;--surface2:#171d26;
@@ -38,6 +38,8 @@
     .eyebrow:before{content:"";width:25px;height:2px;background:var(--red)}
     h1{font-size:clamp(48px,6.3vw,78px);line-height:.99;letter-spacing:-.065em;margin:23px 0 22px;font-weight:850}
     h1 span{color:var(--red-bright)}
+    h1{max-width:650px}
+    .hero-copy h1{font-size:clamp(43px,5.3vw,68px)}
     .lead{max-width:510px;color:#b1bac5;font-size:17px;line-height:1.8;margin:0 0 28px}
     .actions{display:flex;gap:12px;flex-wrap:wrap}
     .hero-meta{display:flex;align-items:center;gap:17px;flex-wrap:wrap;margin-top:30px;color:#788391;font-size:11px;letter-spacing:.04em}
@@ -51,6 +53,13 @@
     .visual img{display:block;width:100%;height:auto;border-radius:5px;border:1px solid #3b4653}
     .visual-caption{display:flex;justify-content:space-between;gap:12px;padding:11px 5px 1px;color:#8994a2;font-size:10px}
     .visual-caption strong{color:#e5e9ee;font-weight:700}
+    .video-section{padding:76px 0 82px;border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,rgba(230,55,67,.045),transparent 70%)}
+    .video-head{text-align:center;max-width:760px;margin:0 auto 28px}
+    .video-head .eyebrow{justify-content:center}
+    .video-head .eyebrow:before{display:none}
+    .video-head p{color:var(--muted);font-size:14px;margin:0}
+    .video-frame{max-width:900px;margin:0 auto;position:relative;aspect-ratio:16/9;border:1px solid #3a4654;border-radius:12px;overflow:hidden;background:#050608;box-shadow:0 25px 70px rgba(0,0,0,.42),0 0 40px rgba(230,55,67,.08)}
+    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     section{padding:86px 0;border-bottom:1px solid rgba(255,255,255,.07)}
     .section-head{max-width:720px;margin-bottom:36px}
     h2{font-size:clamp(32px,4vw,47px);line-height:1.1;letter-spacing:-.05em;margin:14px 0}
@@ -97,9 +106,9 @@
     <a class="brand" href="#top" aria-label="GGTR Audio home"><img src="assets/ggtr-audio-logo.png" alt="GGTR Audio"></a>
     <div class="nav-right">
       <nav class="navlinks" aria-label="Main navigation">
-        <a href="#tools" data-i18n="navTools">Tools</a>
-        <a href="#how" data-i18n="navHow">How it works</a>
+        <a href="#tools" data-i18n="navTools">Plugins</a>
         <a href="#about" data-i18n="navAbout">About</a>
+        <a href="https://github.com/ggtraudio-afk/ggtraudio-tone-match" target="_blank" rel="noopener" data-i18n="navSupport">Support</a>
       </nav>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button><span>/</span>
@@ -114,17 +123,17 @@
   <div class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow" data-i18n="heroEyebrow">Independent audio tools · Made for creators</div>
-        <h1><span data-i18n="heroTitle1">Better tools.</span><br><span data-i18n="heroTitle2">More possibilities.</span></h1>
-        <p class="lead" data-i18n="heroLead">GGTR Audio develops practical tools for guitarists and music creators — making useful audio technology more accessible and sharing our products freely.</p>
+        <div class="eyebrow" data-i18n="heroEyebrow">GGTR AUDIO · Tools for Guitarists & Music Producers</div>
+        <h1><span data-i18n="heroTitle1">Your Sound.</span><br><span data-i18n="heroTitle2">Your Tools.</span></h1>
+        <p class="lead" data-i18n="heroLead">GGTR Audio is an independent developer project built around a passion for guitar and music. We create useful tools for musicians, explore new ideas and share our products for free.</p>
         <div class="actions">
-          <a class="btn" data-i18n="heroExplore" href="#tools">Explore our tools ↓</a>
+          <a class="btn" data-i18n="heroExplore" href="#tools">Explore our plugins ↓</a>
           <a class="btn ghost" data-i18n="heroGithub" href="https://github.com/ggtraudio-afk" target="_blank" rel="noopener">Visit GitHub ↗</a>
         </div>
         <div class="hero-meta">
-          <span><i></i><b data-i18n="metaIndependent">Independent development</b></span>
+          <span><i></i><b data-i18n="metaIndependent">Independent developer</b></span>
           <span><i></i><b data-i18n="metaFree">Free tools</b></span>
-          <span><i></i><b data-i18n="metaWorkflow">Built for real workflows</b></span>
+          <span><i></i><b data-i18n="metaWorkflow">Made for musicians</b></span>
         </div>
       </div>
       <div class="visual">
@@ -134,6 +143,20 @@
       </div>
     </div>
   </div>
+
+
+  <section class="video-section" id="video">
+    <div class="wrap">
+      <div class="video-head">
+        <div class="eyebrow" data-i18n="videoEyebrow">See it in action</div>
+        <h2 data-i18n="videoTitle">Meet GGTR Tone Match.</h2>
+        <p data-i18n="videoLead">Watch the introduction and see how the plugin compares tones and creates a matching filter.</p>
+      </div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/n2FWl7tVh9Y" title="GGTR Tone Match — Product Introduction" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
 
   <section id="tools">
     <div class="wrap">
@@ -179,10 +202,10 @@
 
   <section id="about">
     <div class="wrap">
-      <div class="section-head"><div class="eyebrow" data-i18n="aboutEyebrow">About GGTR Audio</div><h2 data-i18n="aboutTitle">Built around a simple idea.</h2></div>
+      <div class="section-head"><div class="eyebrow" data-i18n="aboutEyebrow">About GGTR Audio</div><h2 data-i18n="aboutTitle">An independent project, built with a love of music.</h2></div>
       <div class="about-grid">
         <article class="about-card"><h3 data-i18n="purposeTitle">Our purpose</h3><p data-i18n="purposeDesc">Our goal is to make hard-to-access tools used in guitar and music production more accessible in plugin form, develop new ideas, and share the products we create with everyone for free.</p></article>
-        <article class="about-card"><h3 data-i18n="independentTitle">Independent development</h3><p data-i18n="independentDesc">GGTR Audio is an independent development initiative focused on practical audio tools and creative workflows. We build, test and improve our products with real-world use in mind.</p></article>
+        <article class="about-card"><h3 data-i18n="independentTitle">Independent development</h3><p data-i18n="independentDesc">GGTR Audio, gitar ve müzik tutkusuyla yola çıkmış bağımsız bir geliştirici projesidir. Amacımız, gitaristlerin işine yarayabilecek yazılımlar ve küçük araçlar geliştirmek, bunları diğer müzisyenlerle paylaşmak ve müzik üretimini herkes için biraz daha erişilebilir hale getirmek.</p></article>
       </div>
     </div>
   </section>
@@ -205,12 +228,13 @@
 <script>
 const translations={
 en:{
-navTools:"Tools",navHow:"How it works",navAbout:"About",navDownload:"Get the plugin ↗",
-heroEyebrow:"Independent audio tools · Made for creators",heroTitle1:"Better tools.",heroTitle2:"More possibilities.",
-heroLead:"GGTR Audio develops practical tools for guitarists and music creators — making useful audio technology more accessible and sharing our products freely.",
-heroExplore:"Explore our tools ↓",heroGithub:"Visit GitHub ↗",metaIndependent:"Independent development",metaFree:"Free tools",metaWorkflow:"Built for real workflows",
+navTools:"Plugins",navAbout:"About",navSupport:"Support",navDownload:"Get the plugin ↗",
+heroEyebrow:"GGTR AUDIO · Tools for Guitarists & Music Producers",heroTitle1:"Your Sound.",heroTitle2:"Your Tools.",
+heroLead:"GGTR Audio is an independent developer project built around a passion for guitar and music. We create useful tools for musicians, explore new ideas and share our products for free.",
+heroExplore:"Explore our plugins ↓",heroGithub:"Visit GitHub ↗",metaIndependent:"Independent developer",metaFree:"Free tools",metaWorkflow:"Made for musicians",
 visualLabel:"GGTR TONE MATCH · INTERFACE",visualCaption:"Capture. Compare. Match.",visualSub:"Frequency-based tone matching",
-toolsEyebrow:"Our tools",toolsTitle:"Focused tools for better sound.",toolsLead:"Our first release helps guitarists bring their own tone closer to a reference recording.",
+videoEyebrow:"See it in action",videoTitle:"Meet GGTR Tone Match.",videoLead:"Watch the introduction and see how the plugin compares tones and creates a matching filter.",
+toolsEyebrow:"Plugins",toolsTitle:"Tools for guitarists and music producers.",toolsLead:"Our first release helps guitarists bring their own tone closer to a reference recording.",
 productLabel:"GGTR AUDIO · FREE PLUGIN",productDesc:"Compare your guitar sound with a reference and create a corrective filter based on their frequency balance. Audition the result in your DAW and export it as a WAV impulse response.",
 tagFree:"Free",downloadFree:"Download free ↗",viewGithub:"View on GitHub ↗",
 feature1Title:"Reference analysis",feature1Desc:"Use a reference recording to capture the tonal balance you want to approach.",
@@ -222,19 +246,20 @@ howEyebrow:"Simple workflow",howTitle:"From reference to your own tone.",howLead
 step1Title:"Load a reference",step1Desc:"Choose the recording whose overall tonal balance you want to explore.",
 step2Title:"Analyze your sound",step2Desc:"Feed your own guitar signal into the plugin and compare the two signals.",
 step3Title:"Apply and export",step3Desc:"Audition the matching filter, fine-tune it, and export a WAV IR when ready.",
-aboutEyebrow:"About GGTR Audio",aboutTitle:"Built around a simple idea.",purposeTitle:"Our purpose",
+aboutEyebrow:"About GGTR Audio",aboutTitle:"An independent project, built with a love of music.",purposeTitle:"Our purpose",
 purposeDesc:"Our goal is to make hard-to-access tools used in guitar and music production more accessible in plugin form, develop new ideas, and share the products we create with everyone for free.",
-independentTitle:"Independent development",independentDesc:"GGTR Audio is an independent development initiative focused on practical audio tools and creative workflows. We build, test and improve our products with real-world use in mind.",
+independentTitle:"Independent development",independentDesc:"GGTR Audio is an independent developer project born from a passion for guitar and music. We create useful software and small tools for guitarists, share them with other musicians, and aim to make music production a little more accessible to everyone.",
 ctaTitle:"Try GGTR Tone Match.",ctaDesc:"Explore the plugin, read the documentation and get the latest release.",ctaButton:"Get the free plugin ↗",
 footerTag:"Independent audio tools",rights:"All rights reserved."
 },
 tr:{
-navTools:"Araçlarımız",navHow:"Nasıl çalışır?",navAbout:"Hakkımızda",navDownload:"Plugini indir ↗",
-heroEyebrow:"Bağımsız ses araçları · Üreticiler için",heroTitle1:"Daha iyi araçlar.",heroTitle2:"Daha fazla olasılık.",
-heroLead:"GGTR Audio, gitaristler ve müzik üreticileri için pratik araçlar geliştirir. Kullanışlı ses teknolojilerini daha erişilebilir hale getirir ve ürünlerini herkesle ücretsiz paylaşır.",
-heroExplore:"Araçlarımızı keşfet ↓",heroGithub:"GitHub sayfamız ↗",metaIndependent:"Bağımsız geliştirme",metaFree:"Ücretsiz araçlar",metaWorkflow:"Gerçek kullanım için tasarlandı",
+navTools:"Pluginler",navAbout:"Hakkımızda",navSupport:"Destek",navDownload:"Plugini indir ↗",
+heroEyebrow:"GGTR AUDIO · Gitaristler ve Müzik Üreticileri için Araçlar",heroTitle1:"Daha iyi bir Ses,",heroTitle2:"Daha Özgür Müzik.",
+heroLead:"GGTR Audio, gitar ve müzik tutkusuyla yola çıkmış bağımsız bir geliştirici projesidir. Müzisyenler için kullanışlı araçlar geliştiriyor, yeni fikirler deniyor ve ürünlerimizi herkesle ücretsiz paylaşıyoruz.",
+heroExplore:"Pluginlerimizi keşfet ↓",heroGithub:"GitHub sayfamız ↗",metaIndependent:"Bağımsız geliştirici",metaFree:"Ücretsiz araçlar",metaWorkflow:"Müzisyenler için",
 visualLabel:"GGTR TONE MATCH · ARAYÜZ",visualCaption:"Yakala. Karşılaştır. Eşleştir.",visualSub:"Frekans tabanlı ton eşleştirme",
-toolsEyebrow:"Araçlarımız",toolsTitle:"Daha iyi ses için odaklanmış araçlar.",toolsLead:"İlk ürünümüz, gitaristlerin kendi tonlarını referans bir kayda yaklaştırmalarına yardımcı olmak için tasarlandı.",
+videoEyebrow:"Yakından tanıyın",videoTitle:"GGTR Tone Match ile tanışın.",videoLead:"Tanıtım videosunu izleyin; pluginin tonları nasıl karşılaştırdığını ve eşleştirme filtresini nasıl oluşturduğunu görün.",
+toolsEyebrow:"Pluginlerimiz",toolsTitle:"Gitaristler ve müzik üreticileri için araçlar.",toolsLead:"İlk ürünümüz, gitaristlerin kendi tonlarını referans bir kayda yaklaştırmalarına yardımcı olmak için tasarlandı.",
 productLabel:"GGTR AUDIO · ÜCRETSİZ PLUGİN",productDesc:"Gitar tonunuzu bir referans kayıtla karşılaştırır ve frekans dengesi arasındaki farklara göre düzeltici bir filtre oluşturur. Sonucu DAW içinde dinleyebilir ve WAV impulse response olarak dışa aktarabilirsiniz.",
 tagFree:"Ücretsiz",downloadFree:"Ücretsiz indir ↗",viewGithub:"GitHub'da görüntüle ↗",
 feature1Title:"Referans analizi",feature1Desc:"Yaklaşmak istediğiniz ton dengesini belirlemek için bir referans kayıt kullanın.",
@@ -246,9 +271,9 @@ howEyebrow:"Basit iş akışı",howTitle:"Referans tondan kendi sesinize.",howLe
 step1Title:"Referansı yükleyin",step1Desc:"Genel ton dengesini örnek almak istediğiniz kaydı seçin.",
 step2Title:"Kendi sesinizi analiz edin",step2Desc:"Kendi gitar sinyalinizi plugine gönderin ve iki sinyali karşılaştırın.",
 step3Title:"Uygulayın ve dışa aktarın",step3Desc:"Eşleştirme filtresini dinleyin, ince ayar yapın ve hazır olduğunda WAV IR olarak dışa aktarın.",
-aboutEyebrow:"GGTR Audio hakkında",aboutTitle:"Basit bir fikir etrafında şekillendi.",purposeTitle:"Amacımız",
+aboutEyebrow:"GGTR Audio hakkında",aboutTitle:"Müzik tutkusuyla yola çıkmış bağımsız bir proje.",purposeTitle:"Amacımız",
 purposeDesc:"Amacımız, gitar ve müzik üretiminde kullanılan ulaşılması güç araçları plugin formatında daha erişilebilir hale getirmek, yeni fikirler geliştirmek ve ortaya çıkardığımız ürünleri herkesle ücretsiz paylaşmak.",
-independentTitle:"Bağımsız geliştirme",independentDesc:"GGTR Audio, pratik ses araçlarına ve yaratıcı iş akışlarına odaklanan bağımsız bir geliştirme girişimidir. Ürünlerimizi gerçek kullanım ihtiyaçlarını göz önünde bulundurarak geliştirir, test eder ve iyileştiririz.",
+independentTitle:"Bağımsız geliştirme",independentDesc:"GGTR Audio, gitar ve müzik tutkusuyla yola çıkmış bağımsız bir geliştirici projesidir. Gitaristlerin işine yarayabilecek yazılımlar ve küçük araçlar geliştiriyor, bunları diğer müzisyenlerle paylaşıyor ve müzik üretimini herkes için biraz daha erişilebilir hale getirmeyi amaçlıyoruz.",
 ctaTitle:"GGTR Tone Match'i deneyin.",ctaDesc:"Plugini keşfedin, kullanım bilgilerini inceleyin ve en yeni sürümü edinin.",ctaButton:"Ücretsiz plugini indir ↗",
 footerTag:"Bağımsız ses araçları",rights:"Tüm hakları saklıdır."
 }};
