@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0d11">
-  <meta name="description" content="GGTR Audio — Tools for Guitarists & Music Producers. Your Sound. Your Tools.">
+  <meta name="description" content="GGTR Audio — Free guitar and audio plugins for musicians and music producers.">
   <title>GGTR Audio — Your Sound. Your Tools.</title>
   <style>
     :root{
@@ -54,6 +54,23 @@
     .visual img{display:block;width:100%;height:auto;border-radius:5px;border:1px solid #3b4653}
     .visual-caption{display:flex;justify-content:space-between;gap:12px;padding:11px 5px 1px;color:#8994a2;font-size:10px}
     .visual-caption strong{color:#e5e9ee;font-weight:700}
+    .release-section{padding:64px 0 70px;border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,rgba(230,55,67,.055),transparent 85%)}
+    .release-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
+    .release-head .section-head{margin:0}
+    .release-controls{display:flex;gap:8px;flex-shrink:0}
+    .release-arrow{width:42px;height:42px;border:1px solid #414b59;border-radius:7px;background:#111720;color:#fff;font-size:20px;cursor:pointer}
+    .release-arrow:hover{border-color:var(--red);color:var(--red-bright)}
+    .release-track{display:grid;grid-auto-flow:column;grid-auto-columns:100%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+    .release-track::-webkit-scrollbar{display:none}
+    .release-slide{scroll-snap-align:start;display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:center;padding:24px;border:1px solid #303a47;border-radius:12px;background:linear-gradient(145deg,#171e28,#10151c);min-height:300px}
+    .release-image{border:1px solid #394452;border-radius:9px;background:#080a0d;overflow:hidden;max-height:330px}
+    .release-image img{display:block;width:100%;height:100%;max-height:330px;object-fit:contain}
+    .release-copy .product-label{display:block;margin-bottom:12px}
+    .release-copy h3{font-size:clamp(26px,3vw,38px);margin:0 0 12px}
+    .release-copy p{color:#aeb7c3;font-size:14px;max-width:520px;margin:0 0 20px}
+    .release-dots{display:flex;justify-content:center;gap:8px;margin-top:17px}
+    .release-dot{width:7px;height:7px;border:0;border-radius:50%;background:#4b5664;padding:0;cursor:pointer}
+    .release-dot.active{width:22px;border-radius:10px;background:var(--red)}
     .video-section{padding:76px 0 82px;border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,rgba(230,55,67,.045),transparent 70%)}
     .video-head{text-align:center;max-width:760px;margin:0 auto 28px}
     .video-head .eyebrow{justify-content:center}
@@ -65,12 +82,17 @@
     .section-head{max-width:720px;margin-bottom:36px}
     h2{font-size:clamp(32px,4vw,47px);line-height:1.1;letter-spacing:-.05em;margin:14px 0}
     .section-head p{color:var(--muted);font-size:15px;max-width:650px;margin:0}
-    .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .product-grid{display:grid;grid-template-columns:1fr;gap:24px}
+    .product-block{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
     .product-card{padding:34px;border:1px solid #303a47;border-radius:12px;background:linear-gradient(145deg,#171e28,#10151c);position:relative;overflow:hidden}
     .product-card:after{content:"GGTR";position:absolute;right:-16px;bottom:-65px;font-size:145px;font-weight:950;letter-spacing:-.1em;color:rgba(255,255,255,.025);pointer-events:none}
     .product-label{font-size:10px;font-weight:850;letter-spacing:.2em;color:var(--red-bright)}
     h3{margin:13px 0 12px;font-size:28px;letter-spacing:-.035em;line-height:1.15}
     .product-card p{color:#aeb7c3;font-size:14px;max-width:490px;margin:0 0 22px}
+    .product-art{margin:0 0 20px;border:1px solid #303a47;border-radius:9px;overflow:hidden;background:#080a0d}
+    .product-art img{display:block;width:100%;height:auto}
+    .product-card-inner{display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+    .product-card .actions{position:relative;z-index:1}
     .tags{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 27px}
     .tag{border:1px solid #414c5a;border-radius:100px;padding:5px 10px;color:#c4ccd5;font-size:10px;font-weight:700}
     .features{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -96,8 +118,8 @@
     .foot-brand{display:flex;align-items:center;gap:13px}
     .foot-brand img{width:130px;height:auto;max-height:30px;object-fit:contain;object-position:left}
     .foot a:hover{color:#fff}
-    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:38px}.hero-copy{max-width:720px}.visual{max-width:850px}.product-grid{grid-template-columns:1fr}.nav-right{gap:15px}.navlinks{gap:16px}}
-    @media(max-width:650px){.wrap{width:calc(100% - 32px)}header{height:70px}.brand{min-width:0}.brand img{width:150px}.navlinks a:not(.download-link){display:none}.nav-right{gap:10px}.hero{padding:65px 0 58px}.hero-grid{gap:30px}h1{font-size:clamp(44px,13vw,62px)}.lead{font-size:15px}.visual{padding:8px}.visual-caption{font-size:9px}.hero-meta{gap:10px}.hero-meta span{font-size:10px}section{padding:65px 0}.features,.about-grid,.steps{grid-template-columns:1fr}.feature{min-height:0}.product-card{padding:25px}.cta{padding:27px;align-items:flex-start;flex-direction:column}.foot{align-items:flex-start;flex-direction:column}}
+    @media(max-width:900px){.release-slide{grid-template-columns:1fr}.release-image{max-height:270px}.release-image img{max-height:270px}.hero-grid{grid-template-columns:1fr;gap:38px}.hero-copy{max-width:720px}.visual{max-width:850px}.product-block{grid-template-columns:1fr}.nav-right{gap:15px}.navlinks{gap:16px}}
+    @media(max-width:650px){.release-section{padding:48px 0}.release-head{align-items:center}.release-slide{padding:16px;gap:17px}.release-image{max-height:230px}.release-image img{max-height:230px}.release-controls .release-arrow{width:36px;height:36px}.wrap{width:calc(100% - 32px)}header{height:70px}.brand{min-width:0}.brand img{width:150px}.navlinks a:not(.download-link){display:none}.nav-right{gap:10px}.hero{padding:65px 0 58px}.hero-grid{gap:30px}h1{font-size:clamp(44px,13vw,62px)}.lead{font-size:15px}.visual{padding:8px}.visual-caption{font-size:9px}.hero-meta{gap:10px}.hero-meta span{font-size:10px}section{padding:65px 0}.features,.about-grid,.steps{grid-template-columns:1fr}.feature{min-height:0}.product-card{padding:25px}.cta{padding:27px;align-items:flex-start;flex-direction:column}.foot{align-items:flex-start;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
   </style>
 </head>
@@ -109,13 +131,15 @@
       <nav class="navlinks" aria-label="Main navigation">
         <a href="#tools" data-i18n="navTools">Plugins</a>
         <a href="#about" data-i18n="navAbout">About</a>
-        <a href="https://github.com/ggtraudio-afk/ggtraudio-tone-match" target="_blank" rel="noopener" data-i18n="navSupport">Support</a>
+        <a href="https://github.com/ggtraudio-afk" target="_blank" rel="noopener" data-i18n="navSupport">Support</a>
       </nav>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button><span>/</span>
-        <button type="button" class="lang-btn" data-lang="tr" aria-pressed="false">TR</button>
+        <button type="button" class="lang-btn" data-lang="tr" aria-pressed="false">TR</button><span>/</span>
+        <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button><span>/</span>
+        <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
       </div>
-      <a class="btn download-link" data-i18n="navDownload" href="https://github.com/ggtraudio-afk/ggtraudio-tone-match/releases/latest" target="_blank" rel="noopener">Get the plugin ↗</a>
+      <a class="btn download-link" data-i18n="navDownload" href="#tools">Explore plugins ↓</a>
     </div>
   </div>
 </header>
@@ -146,6 +170,48 @@
   </div>
 
 
+  <section class="release-section" id="releases">
+    <div class="wrap">
+      <div class="release-head">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="releasesEyebrow">GGTR AUDIO · OUR RELEASES</div>
+          <h2 data-i18n="releasesTitle">Our plugins.</h2>
+          <p data-i18n="releasesLead">Explore our latest free audio tools. Choose a plugin to learn more or download it.</p>
+        </div>
+        <div class="release-controls" aria-label="Plugin slider controls">
+          <button class="release-arrow" id="releasePrev" type="button" aria-label="Previous plugin">‹</button>
+          <button class="release-arrow" id="releaseNext" type="button" aria-label="Next plugin">›</button>
+        </div>
+      </div>
+      <div class="release-track" id="releaseTrack">
+        <article class="release-slide">
+          <div class="release-image"><img src="assets/ggtr-tone-match-ui.png" alt="GGTR Tone Match plugin interface" loading="lazy"></div>
+          <div class="release-copy">
+            <span class="product-label" data-i18n="releaseFreeLabel">FREE VST3 PLUGIN</span>
+            <h3>GGTR Tone Match</h3>
+            <p data-i18n="releaseToneDesc">Compare your guitar sound with a reference and create a filter that helps match its frequency balance.</p>
+            <div class="tags"><span class="tag">VST3</span><span class="tag">WAV IR Export</span><span class="tag" data-i18n="tagFree">Free</span></div>
+            <a class="btn" data-i18n="releaseToneButton" href="https://github.com/ggtraudio-afk/ggtraudio-tone-match/releases/latest" target="_blank" rel="noopener">View release ↗</a>
+          </div>
+        </article>
+        <article class="release-slide">
+          <div class="release-image"><img src="assets/semi-parametric-puppet-ui.png" alt="Semi-Parametric PUPPET three-band EQ interface" loading="lazy"></div>
+          <div class="release-copy">
+            <span class="product-label" data-i18n="releaseFreeLabel">FREE VST3 PLUGIN</span>
+            <h3>Semi-Parametric PUPPET</h3>
+            <p data-i18n="releasePuppetDesc">A three-band semi-parametric EQ with separate gain and frequency controls for Low, Mid and High bands.</p>
+            <div class="tags"><span class="tag">VST3</span><span class="tag" data-i18n="tagThreeBand">3-Band EQ</span><span class="tag" data-i18n="tagFree">Free</span></div>
+            <a class="btn" data-i18n="releasePuppetButton" href="https://github.com/ggtraudio-afk/Semi-Parametric-puppet/releases/latest" target="_blank" rel="noopener">View release ↗</a>
+          </div>
+        </article>
+      </div>
+      <div class="release-dots" aria-label="Choose plugin">
+        <button class="release-dot active" type="button" aria-label="Show Tone Match" data-slide="0"></button>
+        <button class="release-dot" type="button" aria-label="Show PUPPET" data-slide="1"></button>
+      </div>
+    </div>
+  </section>
+
   <section class="video-section" id="video">
     <div class="wrap">
       <div class="video-head">
@@ -167,7 +233,8 @@
         <p data-i18n="toolsLead">Our first release helps guitarists bring their own tone closer to a reference recording.</p>
       </div>
       <div class="product-grid">
-        <article class="product-card">
+        <div class="product-block">
+        <article class="product-card product-card-inner">
           <div>
             <div class="product-label" data-i18n="productLabel">GGTR AUDIO · FREE PLUGIN</div>
             <h3>GGTR Tone Match</h3>
@@ -185,8 +252,32 @@
           <article class="feature"><div class="number">03</div><h3 data-i18n="feature3Title">Matching filter</h3><p data-i18n="feature3Desc">Generate an adjustable filter that helps move your sound toward the reference.</p></article>
           <article class="feature"><div class="number">04</div><h3 data-i18n="feature4Title">WAV IR export</h3><p data-i18n="feature4Desc">Export the resulting filter as a WAV impulse response for compatible workflows.</p></article>
         </div>
+        </div>
+        <p class="note" data-i18n="limitation">Tone Match focuses on frequency balance. It does not clone an amplifier, distortion, dynamics, cabinet, microphone or room.</p>
+        <div class="product-block">
+          <article class="product-card product-card-inner">
+            <div>
+              <div class="product-label" data-i18n="puppetLabel">GGTR AUDIO · FREE PLUGIN</div>
+              <h3>Semi-Parametric PUPPET</h3>
+              <div class="product-art">
+                <img src="assets/semi-parametric-puppet-ui.png" alt="Semi-Parametric PUPPET three-band EQ interface with Low, Mid and High gain and frequency controls" loading="lazy">
+              </div>
+              <p data-i18n="puppetDesc">A straightforward three-band semi-parametric EQ with independent gain and frequency controls for Low, Mid and High bands. Shape the tonal balance of guitar sounds and other audio sources.</p>
+              <div class="tags"><span class="tag">VST3</span><span class="tag" data-i18n="tagThreeBand">3-Band EQ</span><span class="tag" data-i18n="tagFree">Free</span></div>
+            </div>
+            <div class="actions">
+              <a class="btn" data-i18n="puppetDownload" href="https://github.com/ggtraudio-afk/Semi-Parametric-puppet/releases/latest" target="_blank" rel="noopener">Download free ↗</a>
+              <a class="btn ghost" data-i18n="viewGithub" href="https://github.com/ggtraudio-afk/Semi-Parametric-puppet" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </article>
+          <div class="features">
+            <article class="feature"><div class="number">01</div><h3 data-i18n="puppetLowTitle">Low band</h3><p data-i18n="puppetLowDesc">Shape the low-frequency range, with frequency selection from 25 Hz to 500 Hz.</p></article>
+            <article class="feature"><div class="number">02</div><h3 data-i18n="puppetMidTitle">Mid band</h3><p data-i18n="puppetMidDesc">Adjust the midrange, with frequency selection from 250 Hz to 5 kHz.</p></article>
+            <article class="feature"><div class="number">03</div><h3 data-i18n="puppetHighTitle">High band</h3><p data-i18n="puppetHighDesc">Shape the high frequencies, with frequency selection from 1 kHz to 20 kHz.</p></article>
+            <article class="feature"><div class="number">04</div><h3 data-i18n="puppetControlTitle">Frequency & gain</h3><p data-i18n="puppetControlDesc">Each band has its own gain control and frequency selector for focused tonal adjustments.</p></article>
+          </div>
+        </div>
       </div>
-      <p class="note" data-i18n="limitation">Tone Match focuses on frequency balance. It does not clone an amplifier, distortion, dynamics, cabinet, microphone or room.</p>
     </div>
   </section>
 
@@ -251,7 +342,14 @@ aboutEyebrow:"About GGTR Audio",aboutTitle:"An independent project, built with a
 purposeDesc:"Our goal is to make hard-to-access tools used in guitar and music production more accessible in plugin form, develop new ideas, and share the products we create with everyone for free.",
 independentTitle:"Independent development",independentDesc:"GGTR Audio is an independent developer project born from a passion for guitar and music. We create useful software and small tools for guitarists, share them with other musicians, and aim to make music production a little more accessible to everyone.",
 ctaTitle:"Try GGTR Tone Match.",ctaDesc:"Explore the plugin, read the documentation and get the latest release.",ctaButton:"Get the free plugin ↗",
-footerTag:"Independent audio tools",rights:"All rights reserved."
+footerTag:"Independent audio tools",rights:"All rights reserved.",
+releasesEyebrow:"GGTR AUDIO · OUR RELEASES",releasesTitle:"Our plugins.",releasesLead:"Explore our latest free audio tools. Choose a plugin to learn more or download it.",
+releaseFreeLabel:"FREE VST3 PLUGIN",releaseToneDesc:"Compare your guitar sound with a reference and create a filter that helps match its frequency balance.",releasePuppetDesc:"A three-band semi-parametric EQ with separate gain and frequency controls for Low, Mid and High bands.",releaseToneButton:"View release ↗",releasePuppetButton:"View release ↗",
+puppetLabel:"GGTR AUDIO · FREE PLUGIN",puppetDesc:"A straightforward three-band semi-parametric EQ with independent gain and frequency controls for Low, Mid and High bands. Shape the tonal balance of guitar sounds and other audio sources.",tagThreeBand:"3-Band EQ",puppetDownload:"Download free ↗",
+puppetLowTitle:"Low band",puppetLowDesc:"Shape the low-frequency range, with frequency selection from 25 Hz to 500 Hz.",
+puppetMidTitle:"Mid band",puppetMidDesc:"Adjust the midrange, with frequency selection from 250 Hz to 5 kHz.",
+puppetHighTitle:"High band",puppetHighDesc:"Shape the high frequencies, with frequency selection from 1 kHz to 20 kHz.",
+puppetControlTitle:"Frequency & gain",puppetControlDesc:"Each band has its own gain control and frequency selector for focused tonal adjustments."
 },
 tr:{
 navTools:"Pluginler",navAbout:"Hakkımızda",navSupport:"Destek",navDownload:"Plugini indir ↗",
@@ -276,8 +374,102 @@ aboutEyebrow:"GGTR Audio hakkında",aboutTitle:"Müzik tutkusuyla yola çıkmı�
 purposeDesc:"Amacımız, gitar ve müzik üretiminde kullanılan ulaşılması güç araçları plugin formatında daha erişilebilir hale getirmek, yeni fikirler geliştirmek ve ortaya çıkardığımız ürünleri herkesle ücretsiz paylaşmak.",
 independentTitle:"Bağımsız geliştirme",independentDesc:"GGTR Audio, gitar ve müzik tutkusuyla yola çıkmış bağımsız bir geliştirici projesidir. Gitaristlerin işine yarayabilecek yazılımlar ve küçük araçlar geliştiriyor, bunları diğer müzisyenlerle paylaşıyor ve müzik üretimini herkes için biraz daha erişilebilir hale getirmeyi amaçlıyoruz.",
 ctaTitle:"GGTR Tone Match'i deneyin.",ctaDesc:"Plugini keşfedin, kullanım bilgilerini inceleyin ve en yeni sürümü edinin.",ctaButton:"Ücretsiz plugini indir ↗",
-footerTag:"Bağımsız ses araçları",rights:"Tüm hakları saklıdır."
-}};
+footerTag:"Bağımsız ses araçları",rights:"Tüm hakları saklıdır.",
+releasesEyebrow:"GGTR AUDIO · YAYINLARIMIZ",releasesTitle:"Pluginlerimiz.",releasesLead:"Ücretsiz ses araçlarımızı keşfedin. Detayları görmek veya indirmek için bir plugin seçin.",
+releaseFreeLabel:"ÜCRETSİZ VST3 PLUGIN",releaseToneDesc:"Gitar tonunuzu bir referansla karşılaştırın ve frekans dengesini yaklaştırmaya yardımcı olan bir filtre oluşturun.",releasePuppetDesc:"Low, Mid ve High bantları için ayrı gain ve frekans kontrolleri sunan üç bantlı semi-parametrik EQ.",releaseToneButton:"Sürümü görüntüle ↗",releasePuppetButton:"Sürümü görüntüle ↗",
+puppetLabel="GGTR AUDIO · ÜCRETSİZ PLUGİN",puppetDesc:"Low, Mid ve High bantları için bağımsız gain ve frekans kontrolleri sunan, üç bantlı semi-parametrik EQ. Gitar tonlarının ve diğer ses kaynaklarının frekans dengesini şekillendirin.",tagThreeBand:"3 Bantlı EQ",puppetDownload:"Ücretsiz indir ↗",
+puppetLowTitle:"Low band",puppetLowDesc:"25 Hz–500 Hz arasında frekans seçimiyle alt frekansları şekillendirin.",
+puppetMidTitle:"Mid band",puppetMidDesc:"250 Hz–5 kHz arasında frekans seçimiyle orta frekansları düzenleyin.",
+puppetHighTitle:"High band",puppetHighDesc:"1 kHz–20 kHz arasında frekans seçimiyle üst frekansları şekillendirin.",
+puppetControlTitle:"Frekans ve gain",puppetControlDesc:"Her bandın kendine ait gain kontrolü ve frekans seçicisi bulunur."
+},
+ru:{
+navTools:"Плагины",navAbout:"О нас",navSupport:"Поддержка",navDownload:"Наши плагины ↓",
+heroEyebrow:"GGTR AUDIO · Инструменты для гитаристов и музыкантов",heroTitle1:"Твой звук.",heroTitle2:"Твои инструменты.",
+heroLead:"GGTR Audio — независимый проект, созданный благодаря любви к гитаре и музыке. Мы разрабатываем полезные инструменты для музыкантов, пробуем новые идеи и бесплатно делимся своими продуктами.",
+heroExplore:"Наши плагины ↓",heroGithub:"GitHub ↗",metaIndependent:"Независимый разработчик",metaFree:"Бесплатные инструменты",metaWorkflow:"Для музыкантов",
+visualLabel:"GGTR TONE MATCH · ИНТЕРФЕЙС",visualCaption:"Запись. Сравнение. Подбор.",visualSub:"Подбор тембра по частотному балансу",
+videoEyebrow:"Посмотрите в работе",videoTitle:"Знакомьтесь: GGTR Tone Match.",videoLead:"Посмотрите видео и узнайте, как плагин сравнивает тембры и создаёт корректирующий фильтр.",
+toolsEyebrow:"Плагины",toolsTitle:"Инструменты для гитаристов и создателей музыки.",toolsLead:"Два бесплатных инструмента GGTR Audio для работы со звуком.",
+productLabel:"GGTR AUDIO · БЕСПЛАТНЫЙ ПЛАГИН",productDesc:"Сравните звучание своей гитары с эталонной записью и создайте корректирующий фильтр на основе частотного баланса. Прослушивайте результат в DAW и экспортируйте его в WAV IR.",
+tagFree:"Бесплатно",downloadFree:"Скачать бесплатно ↗",viewGithub:"Открыть на GitHub ↗",
+feature1Title:"Анализ эталона",feature1Desc:"Используйте запись, чтобы определить тембральный баланс, к которому хотите приблизиться.",
+feature2Title:"Сравнение тембра",feature2Desc:"Проанализируйте свой сигнал и сравните его частотные характеристики с эталоном.",
+feature3Title:"Корректирующий фильтр",feature3Desc:"Создайте настраиваемый фильтр, который поможет приблизить звучание к эталону.",
+feature4Title:"Экспорт WAV IR",feature4Desc:"Экспортируйте полученный фильтр в формате WAV impulse response.",
+limitation:"Tone Match работает с частотным балансом. Он не копирует усилитель, перегруз, динамику, кабинет, микрофон или помещение.",
+howEyebrow:"Простой процесс",howTitle:"От эталона к своему звучанию.",howLead:"Понятный процесс, который легко вписать в привычную гитарную студийную работу.",
+step1Title:"Выберите эталон",step1Desc:"Выберите запись с тембральным балансом, который хотите изучить.",
+step2Title:"Проанализируйте свой звук",step2Desc:"Подайте сигнал своей гитары в плагин и сравните два сигнала.",
+step3Title:"Примените и экспортируйте",step3Desc:"Прослушайте фильтр, настройте его и при необходимости экспортируйте WAV IR.",
+aboutEyebrow:"О GGTR Audio",aboutTitle:"Независимый проект, созданный с любовью к музыке.",purposeTitle:"Наша цель",
+purposeDesc:"Мы хотим сделать инструменты для гитары и музыкального производства более доступными в формате плагинов, разрабатывать новые идеи и бесплатно делиться результатами.",
+independentTitle:"Независимая разработка",independentDesc:"GGTR Audio — независимый проект, создающий полезные инструменты для гитаристов и музыкантов. Мы разрабатываем собственные плагины и делимся ими с сообществом.",
+ctaTitle:"Попробуйте GGTR Tone Match.",ctaDesc:"Изучите плагин, документацию и последнюю версию.",ctaButton:"Скачать бесплатно ↗",
+footerTag:"Независимые аудиоинструменты",rights:"Все права защищены.",
+releasesEyebrow:"GGTR AUDIO · НАШИ РЕЛИЗЫ",releasesTitle:"Наши плагины.",releasesLead:"Познакомьтесь с нашими бесплатными аудиоинструментами. Выберите плагин, чтобы узнать о нём подробнее или скачать его.",
+releaseFreeLabel:"БЕСПЛАТНЫЙ VST3 ПЛАГИН",releaseToneDesc:"Сравните звучание своей гитары с эталоном и создайте фильтр для приближения частотного баланса.",releasePuppetDesc:"Трёхполосный полупараметрический эквалайзер с отдельными регуляторами усиления и частоты для Low, Mid и High.",releaseToneButton:"Открыть релиз ↗",releasePuppetButton:"Открыть релиз ↗",
+puppetLabel="GGTR AUDIO · БЕСПЛАТНЫЙ ПЛАГИН",puppetDesc:"Простой трёхполосный полупараметрический эквалайзер с отдельными регуляторами усиления и частоты для Low, Mid и High. Настраивайте тональный баланс гитар и других аудиоисточников.",tagThreeBand:"3-полосный EQ",puppetDownload:"Скачать бесплатно ↗",
+puppetLowTitle:"Низкие частоты",puppetLowDesc:"Настройка низкого диапазона с выбором частоты от 25 Гц до 500 Гц.",
+puppetMidTitle:"Средние частоты",puppetMidDesc:"Настройка среднего диапазона с выбором частоты от 250 Гц до 5 кГц.",
+puppetHighTitle:"Высокие частоты",puppetHighDesc:"Настройка верхнего диапазона с выбором частоты от 1 кГц до 20 кГц.",
+puppetControlTitle:"Частота и усиление",puppetControlDesc:"У каждой полосы есть собственные регуляторы усиления и выбора частоты."
+},
+es:{
+navTools:"Plugins",navAbout:"Acerca de",navSupport:"Soporte",navDownload:"Ver plugins ↓",
+heroEyebrow:"GGTR AUDIO · Herramientas para guitarristas y productores",heroTitle1:"Tu sonido.",heroTitle2:"Tus herramientas.",
+heroLead:"GGTR Audio es un proyecto independiente nacido de la pasión por la guitarra y la música. Creamos herramientas útiles para músicos, exploramos nuevas ideas y compartimos nuestros productos gratis.",
+heroExplore:"Explora nuestros plugins ↓",heroGithub:"Visita GitHub ↗",metaIndependent:"Desarrollador independiente",metaFree:"Herramientas gratuitas",metaWorkflow:"Hecho para músicos",
+visualLabel:"GGTR TONE MATCH · INTERFAZ",visualCaption:"Captura. Compara. Iguala.",visualSub:"Igualación tonal basada en frecuencias",
+videoEyebrow:"Míralo en acción",videoTitle:"Conoce GGTR Tone Match.",videoLead:"Mira la presentación y descubre cómo el plugin compara tonos y crea un filtro de igualación.",
+toolsEyebrow:"Plugins",toolsTitle:"Herramientas para guitarristas y productores.",toolsLead:"Dos herramientas gratuitas de GGTR Audio para trabajar el sonido.",
+productLabel:"GGTR AUDIO · PLUGIN GRATUITO",productDesc:"Compara el sonido de tu guitarra con una referencia y crea un filtro correctivo basado en el equilibrio de frecuencias. Escucha el resultado en tu DAW y expórtalo como WAV IR.",
+tagFree:"Gratis",downloadFree:"Descargar gratis ↗",viewGithub:"Ver en GitHub ↗",
+feature1Title:"Análisis de referencia",feature1Desc:"Usa una grabación de referencia para identificar el equilibrio tonal que quieres conseguir.",
+feature2Title:"Comparación tonal",feature2Desc:"Analiza tu señal y compara sus características de frecuencia con la referencia.",
+feature3Title:"Filtro de igualación",feature3Desc:"Genera un filtro ajustable que ayuda a acercar tu sonido a la referencia.",
+feature4Title:"Exportación WAV IR",feature4Desc:"Exporta el filtro resultante como una respuesta a impulso WAV compatible.",
+limitation:"Tone Match se centra en el equilibrio de frecuencias. No clona amplificadores, distorsión, dinámica, pantallas, micrófonos ni salas.",
+howEyebrow:"Flujo sencillo",howTitle:"De la referencia a tu propio sonido.",howLead:"Un proceso sencillo que encaja en tu flujo habitual de producción de guitarra.",
+step1Title:"Carga una referencia",step1Desc:"Elige la grabación cuyo equilibrio tonal quieres explorar.",
+step2Title:"Analiza tu sonido",step2Desc:"Envía tu propia señal de guitarra al plugin y compara ambas señales.",
+step3Title:"Aplica y exporta",step3Desc:"Escucha el filtro, ajústalo y exporta un WAV IR cuando esté listo.",
+aboutEyebrow:"Sobre GGTR Audio",aboutTitle:"Un proyecto independiente creado por amor a la música.",purposeTitle:"Nuestro objetivo",
+purposeDesc:"Queremos hacer más accesibles mediante plugins las herramientas utilizadas en la producción musical y de guitarra, desarrollar nuevas ideas y compartir nuestros productos gratis.",
+independentTitle:"Desarrollo independiente",independentDesc:"GGTR Audio es un proyecto independiente que desarrolla herramientas útiles para guitarristas y músicos. Creamos nuestros propios plugins y los compartimos con la comunidad.",
+ctaTitle:"Prueba GGTR Tone Match.",ctaDesc:"Descubre el plugin, consulta la documentación y descarga la última versión.",ctaButton:"Descargar gratis ↗",
+footerTag:"Herramientas de audio independientes",rights:"Todos los derechos reservados.",
+releasesEyebrow:"GGTR AUDIO · LANZAMIENTOS",releasesTitle:"Nuestros plugins.",releasesLead:"Descubre nuestras herramientas de audio gratuitas. Elige un plugin para conocerlo mejor o descargarlo.",
+releaseFreeLabel:"PLUGIN VST3 GRATUITO",releaseToneDesc:"Compara el sonido de tu guitarra con una referencia y crea un filtro que ayuda a igualar su equilibrio de frecuencias.",releasePuppetDesc:"Un ecualizador semiparamétrico de tres bandas con controles independientes de ganancia y frecuencia para Low, Mid y High.",releaseToneButton:"Ver lanzamiento ↗",releasePuppetButton:"Ver lanzamiento ↗",
+puppetLabel="GGTR AUDIO · PLUGIN GRATUITO",puppetDesc:"Un ecualizador semiparamétrico de tres bandas con controles independientes de ganancia y frecuencia para Low, Mid y High. Da forma al equilibrio tonal de guitarras y otras fuentes de audio.",tagThreeBand:"EQ de 3 bandas",puppetDownload:"Descargar gratis ↗",
+puppetLowTitle:"Banda baja",puppetLowDesc:"Ajusta las frecuencias graves, con selección de frecuencia de 25 Hz a 500 Hz.",
+puppetMidTitle:"Banda media",puppetMidDesc:"Ajusta los medios, con selección de frecuencia de 250 Hz a 5 kHz.",
+puppetHighTitle:"Banda alta",puppetHighDesc:"Ajusta los agudos, con selección de frecuencia de 1 kHz a 20 kHz.",
+puppetControlTitle:"Frecuencia y ganancia",puppetControlDesc:"Cada banda tiene su propio control de ganancia y selector de frecuencia."
+}
+};
+const releaseTrack=document.getElementById("releaseTrack");
+const releaseDots=[...document.querySelectorAll(".release-dot")];
+function goToRelease(index){
+  const slides=releaseTrack.querySelectorAll(".release-slide");
+  const safeIndex=Math.max(0,Math.min(index,slides.length-1));
+  slides[safeIndex].scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"});
+  releaseDots.forEach((dot,i)=>dot.classList.toggle("active",i===safeIndex));
+}
+document.getElementById("releasePrev").addEventListener("click",()=>{
+  const current=Math.round(releaseTrack.scrollLeft/releaseTrack.clientWidth);
+  goToRelease(current-1);
+});
+document.getElementById("releaseNext").addEventListener("click",()=>{
+  const current=Math.round(releaseTrack.scrollLeft/releaseTrack.clientWidth);
+  goToRelease(current+1);
+});
+releaseDots.forEach(dot=>dot.addEventListener("click",()=>goToRelease(Number(dot.dataset.slide))));
+releaseTrack.addEventListener("scroll",()=>{
+  const current=Math.round(releaseTrack.scrollLeft/releaseTrack.clientWidth);
+  releaseDots.forEach((dot,i)=>dot.classList.toggle("active",i===current));
+},{passive:true});
+
 function setLanguage(lang){
  const dict=translations[lang]||translations.en;
  document.documentElement.lang=lang;
